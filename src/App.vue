@@ -1,17 +1,18 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <QuoteMachine quoteMessage="Welcome to Your Vue.js App"
+    quotesAuthor="John okay"/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+//import HelloWorld from './components/HelloWorld.vue'
+import QuoteMachine from './components/QuoteMachine.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    QuoteMachine
   }
 }
 </script>
