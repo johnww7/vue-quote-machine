@@ -18,5 +18,23 @@ export default {
 </script>
 
 <style scoped>
+    #quote-box {
+        display: grid;
+        grid-template-rows: minmax(40px, auto);
+        grid-template-columns: 2fr 2fr 2fr;
+        grid-gap: 10px;
+    }
+    #text {
+        grid-column: 1/4;
+    }
+    #author {
+        grid-column: 1/4;
+    }
+    #new-quote {
+        grid-column: 1/2;
+    }
 
+    #tweet-quote {
+        grid-column: 3/4;
+    }
 </style>
