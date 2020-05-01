@@ -3,17 +3,28 @@
         <p id="text">{{quoteMessage}}</p>
         <p id="author">{{quotesAuthor}}</p>
        
-        <button id="tweet-quote">Tweet</button> 
-         <button id="new-quote">New Quote</button>   
+        <a id="tweet-quote" href="">Tweet</a> 
+        <button id="new-quote" v-on:click="getQuote">New Quote</button>   
     </div>
 </template>
 
 <script>
 export default {
     name: 'QuoteMachine',
-    props: {
+    /*props: {
         quoteMessage: String,
         quotesAuthor: String
+    },*/
+    data() {
+        return {
+            quoteMessage: 'Welcome to Vue js',
+            quotesAuthor: 'John okay'
+        }
+    },
+    methods: {
+        getQuote: function() {
+
+        }
     }
 }
 </script>
@@ -45,6 +56,20 @@ export default {
         grid-column: 3/4;
         padding: 5px;
         margin: 20px;
+    }
+
+    a{
+        background-color: black;
+        color: white;
+        
+        text-decoration: none;
+    }
+
+    a:hover {
+        background-color: red;
+    }
+    a:active {
+        background-color: blue;
     }
     /*p {
         //display: inline-block;
