@@ -4,7 +4,7 @@
         <p id="author">{{quotesAuthor}}</p>
        
         <a id="tweet-quote" href="">Tweet</a> 
-        <button id="new-quote" v-on:click="getQuote">New Quote</button>   
+        <button id="new-quote" v-on:click="onGetQuote">New Quote</button>   
     </div>
 </template>
 
@@ -22,8 +22,19 @@ export default {
         }
     },
     methods: {
-        getQuote: function() {
+        onGetQuote() {
+            console.log("just clicked");
+            this.quoteMessage = "just clicked";
+            this.fetchRandomQuoteData();
+        },
+        fetchRandomQuoteData() {
+            const url = 'https://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=jsonp&jsonp=?';
 
+            fetch(url)
+               // .then(apiData => apiData.json())
+                .then(data => {
+                    console.log(data);
+                });
         }
     }
 }
