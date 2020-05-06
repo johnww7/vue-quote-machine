@@ -3,7 +3,9 @@
         <p id="text">{{quoteMessage}}</p>
         <p id="author">{{quotesAuthor}}</p>
        
-        <a id="tweet-quote" href="">Tweet</a> 
+        <a id="tweet-quote" 
+        href="https://twitter.com/intent/tweet?text=quote+author" target="_blank">
+        Tweet</a> 
         <button id="new-quote" v-on:click="onGetQuote">New Quote</button>   
     </div>
 </template>
@@ -28,13 +30,21 @@ export default {
             this.fetchRandomQuoteData();
         },
         fetchRandomQuoteData() {
-            const url = 'https://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=jsonp&jsonp=?';
-
+            //const url = 'https://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=jsonp&jsonp=?';
+            const url = 'http://quotes.stormconsultancy.co.uk/random.json'
             fetch(url)
-               // .then(apiData => apiData.json())
+                .then(apiData => apiData.json())
                 .then(data => {
                     console.log(data);
+                    this.quoteMessage = data.quote;
+                    this.quotesAuthor = data.author;
+                })
+                .catch(error => {
+                    console.log('Failed to fetch: ' + error);
                 });
+        },
+        onTweet() {
+
         }
     }
 }
