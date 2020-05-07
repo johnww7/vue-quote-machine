@@ -4,7 +4,7 @@
         <p id="author">{{quotesAuthor}}</p>
        
         <a id="tweet-quote" 
-        href="https://twitter.com/intent/tweet?text=quote+author" target="_blank">
+        v-bind:href="tweetUrl" target="_blank">
         Tweet</a> 
         <button id="new-quote" v-on:click="onGetQuote">New Quote</button>   
     </div>
@@ -20,13 +20,14 @@ export default {
     data() {
         return {
             quoteMessage: 'Welcome to Vue js',
-            quotesAuthor: 'John okay'
+            quotesAuthor: 'John okay',
+            tweetUrl: 'https://twitter.com/intent/tweet?text=quote+author'
         }
     },
     methods: {
         onGetQuote() {
             console.log("just clicked");
-            this.quoteMessage = "just clicked";
+            //this.quoteMessage = "just clicked";
             this.fetchRandomQuoteData();
         },
         fetchRandomQuoteData() {
@@ -38,13 +39,33 @@ export default {
                     console.log(data);
                     this.quoteMessage = data.quote;
                     this.quotesAuthor = data.author;
+                    this.onTweet(data.quote, data.author);
                 })
                 .catch(error => {
                     console.log('Failed to fetch: ' + error);
                 });
         },
-        onTweet() {
+        onTweet(quote, author) {
+            const baseUrl = "https://twitter.com/intent/tweet?text=";
 
+            let formattedTweetText = this.quoteLength(quote, author);
+            let newTwitterUrl = baseUrl + encodeURIComponent(formattedTweetText);
+            this.tweetUrl = newTwitterUrl;
+        },
+        quoteLength(quote, author) {
+            let quoteLength = quote.length;
+            let authLength = author.length +1;
+            let textTotal = 140 - authLength;
+
+            if(quoteLength >= textTotal) {
+                let newQuote = quote.slice(0, textTotal);
+                let returnQuote = newQuote + '-' + author;
+                return returnQuote;
+            }
+            else {
+                let returnQuote = quote + '-' + author;
+                return returnQuote;
+            }
         }
     }
 }
