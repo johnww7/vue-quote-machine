@@ -13,10 +13,7 @@
 <script>
 export default {
     name: 'QuoteMachine',
-    /*props: {
-        quoteMessage: String,
-        quotesAuthor: String
-    },*/
+   
     data() {
         return {
             quoteMessage: 'Welcome to Vue js',
@@ -24,12 +21,17 @@ export default {
             tweetUrl: 'https://twitter.com/intent/tweet?text=quote+author'
         }
     },
+    created() {
+            console.log('At created');
+            this.fetchRandomQuoteData();
+    },
     methods: {
         onGetQuote() {
             console.log("just clicked");
             //this.quoteMessage = "just clicked";
             this.fetchRandomQuoteData();
         },
+        
         fetchRandomQuoteData() {
             //const url = 'https://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=jsonp&jsonp=?';
             const url = 'http://quotes.stormconsultancy.co.uk/random.json'

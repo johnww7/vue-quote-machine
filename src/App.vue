@@ -1,12 +1,11 @@
 <template>
   <div id="app">
-    <QuoteMachine quoteMessage="Welcome to Your Vue.js App"
-    quotesAuthor="John okay"/>
+    <QuoteMachine/>
   </div>
 </template>
 
 <script>
-//import HelloWorld from './components/HelloWorld.vue'
+
 import QuoteMachine from './components/QuoteMachine.vue'
 
 export default {
@@ -24,7 +23,10 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 15%;
-  
+  /*margin-top: 15%;*/
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: black;
 }
 </style>
