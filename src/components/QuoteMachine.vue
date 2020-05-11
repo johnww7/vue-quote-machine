@@ -30,6 +30,7 @@ export default {
             console.log("just clicked");
             //this.quoteMessage = "just clicked";
             this.fetchRandomQuoteData();
+            document.body.style.background = this.changeBackground();
         },
         
         fetchRandomQuoteData() {
@@ -68,6 +69,15 @@ export default {
                 let returnQuote = quote + '-' + author;
                 return returnQuote;
             }
+        },
+        changeBackground() {
+            let max = 255;
+            let min = 0;
+            let red = Math.floor(Math.random() * (max - min + 1)) + min;
+            let green = Math.floor(Math.random() * (max - min + 1)) + min;
+            let blue = Math.floor(Math.random() * (max - min + 1)) + min;
+            let rgbColor = "rgb(" + red + "," + green + "," + blue + ")";
+            return rgbColor;
         }
     }
 }
@@ -80,8 +90,8 @@ export default {
         grid-template-columns: 2fr 2fr 2fr;
         grid-gap: 10px;
         background-color: yellow;
-        margin: 0 auto;
-        width: 40%;
+        margin: 10% auto;
+        width: 30%;
         height: 30%;
     }
     #text {
@@ -100,10 +110,11 @@ export default {
         grid-column: 3/4;
         padding: 5px;
         margin: 20px;
+        background-color: gray;
     }
 
     a{
-        background-color: black;
+        background-color: gray;
         color: white;
         
         text-decoration: none;
