@@ -112,8 +112,55 @@ export default {
         margin: 20px;
         background-color: gray;
     }
+    button {
+        box-shadow: 3px 4px 0px 0px #899599;
+        background:linear-gradient(45deg, black, transparent);
+        background-color: black;
+        border-radius:15px;
+        border:1px solid #593e59;
+        display:inline-block;
+        cursor:pointer;
+        color:#3a8a9e;
+        font-family:Arial;
+        font-size:17px;
+        padding:7px 25px;
+        text-decoration:none;
+        text-shadow:0px 1px 0px #e1e2ed;
+    }
+    button:hover {
+        background:linear-gradient(to bottom, #bab1ba 5%, #ededed 100%);
+        background-color:#bab1ba;
+    }
+    button:active {
+        position:relative;
+        top:1px;
+    }
 
-    a{
+    a {
+        box-shadow: 3px 4px 0px 0px #899599;
+        
+        background-color:black;
+        border-radius:15px;
+        border:1px solid #593e59;
+        display:inline-block;
+        cursor:pointer;
+        color:#3a8a9e;
+        font-family:Arial;
+        font-size:17px;
+        padding:7px 25px;
+        text-decoration:none;
+        text-shadow:0px 1px 0px #e1e2ed;
+    }
+    a:hover {
+        background:linear-gradient(to bottom, #bab1ba 5%, #ededed 100%);
+        background-color:#bab1ba;
+    }
+    a:active {
+        position:relative;
+        top:1px;
+    }
+
+    /*a{
         background-color: gray;
         color: white;
         
@@ -125,7 +172,7 @@ export default {
     }
     a:active {
         background-color: blue;
-    }
+    }*/
     /*p {
         //display: inline-block;
     }
