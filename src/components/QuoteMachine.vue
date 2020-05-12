@@ -86,19 +86,29 @@ export default {
 <style scoped>
     #quote-box {
         display: grid;
-        grid-template-rows: minmax(40px, auto);
+        grid-template-rows: minmax(125px, auto);
         grid-template-columns: 2fr 2fr 2fr;
-        grid-gap: 10px;
-        background-color: yellow;
+        grid-gap: 5px;
+        background-color: rgb(194, 194, 182);
         margin: 10% auto;
         width: 30%;
-        height: 30%;
+        height: 35%;
+        border: 3px solid #5b52a5;
+        border-radius: 20px;
+        box-shadow: 3px 4px 0px 0px #899599;
     }
     #text {
         grid-column: 1/4;
+        padding: 10px 5px 5px 5px;
+        margin: 15px 10px 10px 10px;
+        font-family: 'Atma';
+        font-size: 20px;
     }
     #author {
         grid-column: 1/4;
+        padding: 10px;
+        margin: 30px 5px 5px 5px;
+        font-family: 'Atma';
     }
     #tweet-quote {
         grid-column: 1/2;
@@ -110,11 +120,10 @@ export default {
         grid-column: 3/4;
         padding: 5px;
         margin: 20px;
-        background-color: gray;
     }
     button {
         box-shadow: 3px 4px 0px 0px #899599;
-        background:linear-gradient(45deg, black, transparent);
+        background:linear-gradient(60deg, black, transparent);
         background-color: black;
         border-radius:15px;
         border:1px solid #593e59;
@@ -124,6 +133,7 @@ export default {
         font-family:Arial;
         font-size:17px;
         padding:7px 25px;
+       
         text-decoration:none;
         text-shadow:0px 1px 0px #e1e2ed;
     }
@@ -138,7 +148,7 @@ export default {
 
     a {
         box-shadow: 3px 4px 0px 0px #899599;
-        
+        background: linear-gradient(60deg, black, transparent);
         background-color:black;
         border-radius:15px;
         border:1px solid #593e59;
