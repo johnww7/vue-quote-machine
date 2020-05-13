@@ -1,12 +1,24 @@
 <template>
-    <div id="quote-box">
+    <div v-if="quoteMessage !== ''" id="quote-box">
         <p id="text">{{quoteMessage}}</p>
-        <p id="author">{{quotesAuthor}}</p>
-       
-        <a id="tweet-quote" 
+        
+        <p id="author">-{{quotesAuthor}}</p>
+
+        <a id="tweet-quote" class="button-sizing"
         v-bind:href="tweetUrl" target="_blank">
         Tweet</a> 
-        <button id="new-quote" v-on:click="onGetQuote">New Quote</button>   
+        <button id="new-quote" class="button-sizing" v-on:click="onGetQuote">New Quote</button>   
+    </div>
+
+    <div v-else id="quote-box">
+        <p id="text">Error fetching quotes from API</p>
+        
+        <p id="author">-Error message</p>
+
+        <a id="tweet-quote" class="button-sizing"
+        v-bind:href="tweetUrl" target="_blank">
+        Tweet</a> 
+        <button id="new-quote" class="button-sizing" v-on:click="onGetQuote">New Quote</button>   
     </div>
 </template>
 
@@ -16,30 +28,27 @@ export default {
    
     data() {
         return {
-            quoteMessage: 'Welcome to Vue js',
-            quotesAuthor: 'John okay',
+            quoteMessage: '',
+            quotesAuthor: '',
             tweetUrl: 'https://twitter.com/intent/tweet?text=quote+author'
         }
     },
     created() {
-            console.log('At created');
             this.fetchRandomQuoteData();
+            document.body.style.background = this.changeBackground();
     },
     methods: {
         onGetQuote() {
-            console.log("just clicked");
-            //this.quoteMessage = "just clicked";
             this.fetchRandomQuoteData();
             document.body.style.background = this.changeBackground();
         },
         
         fetchRandomQuoteData() {
-            //const url = 'https://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=jsonp&jsonp=?';
-            const url = 'http://quotes.stormconsultancy.co.uk/random.json'
+            const url = 'http://quotes.stormconsultancy.co.uk/random.json';            //const url = 'https://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=jsonp&jsonp=?';
+            
             fetch(url)
                 .then(apiData => apiData.json())
                 .then(data => {
-                    console.log(data);
                     this.quoteMessage = data.quote;
                     this.quotesAuthor = data.author;
                     this.onTweet(data.quote, data.author);
@@ -99,10 +108,11 @@ export default {
     }
     #text {
         grid-column: 1/4;
-        padding: 10px 5px 5px 5px;
-        margin: 15px 10px 10px 10px;
+        padding: 5px 5px 5px 5px;
+        margin: 30px 10px 10px 10px;
         font-family: 'Atma';
         font-size: 20px;
+        text-align: center;
     }
     #author {
         grid-column: 1/4;
@@ -112,15 +122,18 @@ export default {
     }
     #tweet-quote {
         grid-column: 1/2;
-        padding: 10px;
-        margin: 30px; 
+
     }
-    #new-quote
-    {
+    #new-quote{
         grid-column: 3/4;
-        padding: 5px;
-        margin: 20px;
+
     }
+
+    .button-sizing {
+        padding: 20px 10px 20px 10px;
+        margin: 20px 15px 20px 15px;
+    }
+
     button {
         box-shadow: 3px 4px 0px 0px #899599;
         background:linear-gradient(60deg, black, transparent);
@@ -132,8 +145,6 @@ export default {
         color:#3a8a9e;
         font-family:Arial;
         font-size:17px;
-        padding:7px 25px;
-       
         text-decoration:none;
         text-shadow:0px 1px 0px #e1e2ed;
     }
@@ -157,7 +168,6 @@ export default {
         color:#3a8a9e;
         font-family:Arial;
         font-size:17px;
-        padding:7px 25px;
         text-decoration:none;
         text-shadow:0px 1px 0px #e1e2ed;
     }
@@ -170,23 +180,4 @@ export default {
         top:1px;
     }
 
-    /*a{
-        background-color: gray;
-        color: white;
-        
-        text-decoration: none;
-    }
-
-    a:hover {
-        background-color: red;
-    }
-    a:active {
-        background-color: blue;
-    }*/
-    /*p {
-        //display: inline-block;
-    }
-    button {
-        display: inline-block;
-    }*/
 </style>
